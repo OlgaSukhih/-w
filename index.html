@@ -1,153 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>They Don't Care About Us - Listen&Sing</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .left-column {
-            flex: 30%;
-            padding-right: 20px;
-        }
-        .right-column {
-            flex: 70%;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #ff6b9d;
-            text-align: center;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 30px;
-            font-weight: normal;
-        }
-        .subtitle {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .subtitle a {
-            color: #bb86fc;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-        .subtitle a:hover {
-            color: #9a67ea;
-            text-decoration: underline;
-        }
-        .song-text {
-            font-size: 1.1em;
-            white-space: pre-line;
-        }
-        .word-choice {
-            display: inline-block;
-            background-color: #333;
-            color: #e0e0e0;
-            padding: 2px 8px;
-            margin: 2px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .word-choice:hover {
-            background-color: #444;
-        }
-        .word-choice.correct {
-            background-color: #4caf50;
-            color: white;
-        }
-        .word-choice.incorrect {
-            background-color: #f44336;
-            color: white;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-translate {
-            background-color: #bb86fc;
-            color: black;
-        }
-        .btn-translate:hover {
-            background-color: #9a67ea;
-        }
-        .btn-discuss {
-            background-color: #03dac6;
-            color: black;
-        }
-        .btn-discuss:hover {
-            background-color: #018786;
-        }
-        .translation, .discussion {
-            display: none;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #1e1e1e;
-            border-radius: 5px;
-        }
-        .discussion h3 {
-            color: #03dac6;
-            margin-top: 0;
-        }
-        .translation h3 {
-            color: #bb86fc;
-            margin-top: 0;
-        }
-        .song-image {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .audio-player {
-            width: 100%;
-            margin: 20px 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>They don't care about us</title>
+  <style>
+    body {
+      background-color: #1b1b2f;
+      color: #ffffff;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 5px;
+    }
+    h2 a {
+      color: #7ec8e3;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    audio {
+      display: block;
+      margin: 30px auto;
+    }
+    .lyrics-container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .girl-img {
+      position: absolute;
+      left: -240px;
+      top: 0;
+      width: 180px;
+    }
+    .lips {
+      position: absolute;
+      right: -200px;
+      top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      width: 140px;
+      height: 700px;
+    }
+    .lips img {
+      width: 36px;
+      margin: 4px;
+    }
+    .line {
+      margin-bottom: 24px;
+      font-size: 1.2em;
+    }
+    .options {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: 10px;
+    }
+    .choice {
+      background-color: #2f2f3d;
+      color: #ffffff;
+      border: 2px solid #555;
+      border-radius: 10px;
+      padding: 6px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .choice:hover {
+      background-color: #3f3f50;
+    }
+    .choice.correct {
+      background-color: #2e7d32;
+      border-color: #2e7d32;
+    }
+    .choice.incorrect {
+      background-color: #c62828;
+      border-color: #c62828;
+    }
+    .buttons {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .buttons button {
+      background-color: pink;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <img src="/mnt/data/20250509_1525_Человек%20в%20шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="MJ drawing" class="song-image">
-            <audio class="audio-player" controls>
-                <source src="/mnt/data/michael-jackson-they-dont-care-about-us_(muzbig.club).mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="right-column">
-            <h1>Listen&Sing</h1>
-            <div class="subtitle">
-                <a href="https://t.me/yourchannel" target="_blank">Join&GetInspired</a>
-            </div>
-            <h2>They don't care about us</h2>
-             <div class="lyrics">
+  <h1>Listen & Sing</h1>
+  <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&GetInspired</a></h2>
+
+  <audio controls>
+    <source src="audio.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="lyrics">
 <div class="line">Skin head, dead head</div>
 <div class="line">Everybody gone bad</div>
 <div class="line">Situation, aggravation</div>
