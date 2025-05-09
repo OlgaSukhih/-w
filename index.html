@@ -74,6 +74,7 @@
     .word-option.correct {
       background-color: #6fa076;
       color: #000;
+      pointer-events: none;
     }
     .word-option.incorrect {
       background-color: #e89ca6;
@@ -117,13 +118,72 @@
 
 <div class="container">
   <div class="image">
-    <img src="20250509_1525_\u0427\u0435\u043b\u043e\u0432\u0435\u043a \u0432 \u0448\u043b\u044f\u043f\u0435_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer" />
+    <img src="20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer" />
   </div>
-  <div class="lyrics" id="lyrics">
-    <!-- Сюда вставлен полный текст песни с интерактивом по ключевым словам -->
-    <!-- Здесь может быть множество span-элементов вида: <span class='word-option' onclick='check(this, "правильное слово")'>вариант</span> -->
-    <!-- Для краткости сейчас опущен. Он будет вставлен по требованию -->
-  </div>
+  <div class="lyrics" id="lyrics"> Skin head, <span class="word-option" onclick="check(this, 'dead')">dead</span> head<br>
+    Everybody gone <span class="word-option" onclick="check(this, 'bad')">bad</span><br>
+    Situation, <span class="word-option" onclick="check(this, 'aggravation')">aggravation</span><br>
+    Everybody <span class="word-option" onclick="check(this, 'allegation')">allegation</span><br>
+    In the <span class="word-option" onclick="check(this, 'suite')">suite</span>, on the news<br>
+    Everybody dog <span class="word-option" onclick="check(this, 'food')">food</span><br>
+    Bang bang, shot <span class="word-option" onclick="check(this, 'dead')">dead</span><br>
+    Everybody's gone <span class="word-option" onclick="check(this, 'mad')">mad</span><br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    Beat me, <span class="word-option" onclick="check(this, 'hate')">hate</span> me<br>
+    You can never <span class="word-option" onclick="check(this, 'break')">break</span> me<br>
+    Will me, thrill me<br>
+    You can never <span class="word-option" onclick="check(this, 'kill')">kill</span> me<br>
+    Jew me, sue me<br>
+    Everybody do me<br>
+    Kick me, <span class="word-option" onclick="check(this, 'kike')">kike</span> me<br>
+    Don't you black or white me<br><br>
+
+    Tell me what has become of my <span class="word-option" onclick="check(this, 'life')">life</span><br>
+    I have a wife and two children who <span class="word-option" onclick="check(this, 'love')">love</span> me<br>
+    I am the victim of police <span class="word-option" onclick="check(this, 'brutality')">brutality</span>, now<br>
+    I'm tired of bein' the victim of <span class="word-option" onclick="check(this, 'hate')">hate</span><br>
+    You're rapin' me of my <span class="word-option" onclick="check(this, 'pride')">pride</span><br>
+    Oh, for God's sake<br>
+    I look to heaven to fulfill its <span class="word-option" onclick="check(this, 'prophecy')">prophecy</span>...<br>
+    Set me <span class="word-option" onclick="check(this, 'free')">free</span><br><br>
+
+    Skin head, dead head<br>
+    Everybody gone bad<br>
+    <span class="word-option" onclick="check(this, 'Trepidation')">Trepidation</span>, <span class="word-option" onclick="check(this, 'speculation')">speculation</span><br>
+    Everybody allegation<br>
+    In the suite, on the news<br>
+    Everybody dog food<br>
+    Black man, black male<br>
+    Throw your brother in <span class="word-option" onclick="check(this, 'jail')">jail</span><br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    The <span class="word-option" onclick="check(this, 'government')">government</span> don't wanna see<br>
+    But if <span class="word-option" onclick="check(this, 'Roosevelt')">Roosevelt</span> was livin'<br>
+    He wouldn't let this be, no, no<br><br>
+
+    Some things in life they just don't wanna see<br>
+    But if <span class="word-option" onclick="check(this, 'Martin Luther')">Martin Luther</span> was livin'<br>
+    He wouldn't let this be<br><br>
+
+    Skin head, dead head<br>
+    Everybody gone bad<br>
+    Situation, <span class="word-option" onclick="check(this, 'segregation')">segregation</span><br>
+    Everybody allegation<br>
+    In the suite, on the news<br>
+    Everybody dog food<br>
+    Kick me, <span class="word-option" onclick="check(this, 'strike')">strike</span> me<br>
+    Don't you wrong or right me<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us</div>
 </div>
 
 <div class="buttons">
@@ -134,21 +194,143 @@
 <script>
   function check(elem, correctWord) {
     if (elem.innerText === correctWord) {
+      elem.classList.remove("incorrect");
       elem.classList.add("correct");
+      elem.style.pointerEvents = "none";
     } else {
       elem.classList.add("incorrect");
     }
-    elem.onclick = null;
   }
 
   function showTranslation() {
-    alert(`ОНИ ПЛЕВАЛИ НА НАС\n\nБритоголовый, мёртвый\nВсе сошли с ума\nСитуация, раздражение\nВсе выдвигают обвинения\nВ номере, в новостях\nВсе как собачий корм\nВыстрелы, смерть\nВсе сошли с ума\n\nВсё, что я хочу сказать —\nИм на нас плевать...`); // Обрезан для краткости
+    alert(`ОНИ ПЛЕВАТЬ НА НАС
+
+Бритоголовый, мёртвый — все сходят с ума
+Ситуация, раздражение — все кого-то обвиняют
+В номере, в новостях — все как собачий корм
+Выстрелы, мёртв — все обезумели
+
+Всё, что я хочу сказать — им плевать на нас
+
+Бей меня, ненавидь меня — ты никогда не сломаешь меня
+Дави меня, манипулируй — ты никогда не убьешь меня
+Оскорбляй, суди — все это делают
+Пинай, унижай — не разделяй меня по цвету кожи
+
+Я жертва полицейского насилия
+Меня лишают гордости
+Я взываю к небу, чтобы оно исполнило пророчество — освободи меня
+
+Чернокожий, арестованный — брось своего брата в тюрьму
+
+Меня бросают в "неправильный класс"
+Я не могу поверить, что это та страна, откуда я родом
+
+Если бы Рузвельт был жив — он бы этого не допустил
+Если бы Мартин Лютер был жив — он бы этого не допустил
+
+Они на самом деле не заботятся о нас`);
   }
 
   function showDiscussion() {
-    alert("ВОПРОСЫ ДЛЯ ОБСУЖДЕНИЯ:\n\n1. What message is the singer trying to deliver?\n2. Do you think this song is still relevant today?\n3. How do music and art help fight injustice?");
+    alert("ВОПРОСЫ ДЛЯ ОБСУЖДЕНИЯ:
+
+1. What message is the singer trying to deliver?
+2. Do you think this song is still relevant today?
+3. How do music and art help fight injustice?");
   }
 </script>
 
 </body>
-</html>
+</html> us<br><br>
+
+    The government don't wanna see<br>
+    But if Roosevelt was livin'<br>
+    He wouldn't let this be, no, no<br><br>
+
+    Skin head, dead head<br>
+    Everybody gone bad<br>
+    Situation, speculation<br>
+    Everybody litigation<br>
+    Beat me, bash me<br>
+    You can never trash me<br>
+    Hit me, kick me<br>
+    You can never get me<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    Some things in life they just don't wanna see<br>
+    But if Martin Luther was livin'<br>
+    He wouldn't let this be<br><br>
+
+    Skin head, dead head<br>
+    Everybody gone bad<br>
+    Situation, segregation<br>
+    Everybody allegation<br>
+    In the suite, on the news<br>
+    Everybody dog food<br>
+    Kick me, strike me<br>
+    Don't you wrong or right me<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us us<br><br>
+
+    Tell me what has become of my rights<br>
+    Am I invisible because you ignore me?<br>
+    Your proclamation promised me free liberty, now<br>
+    I'm tired of bein' the victim of shame<br>
+    They're throwin' me in a class with a bad name<br>
+    I can't believe this is the land from which I came<br>
+    You know I really do hate to say us<br><br>
+
+    Tell me what has become of my life<br>
+    I have a wife and two children who <span class="word-option" onclick="check(this, 'love')">love</span> me<br>
+    I am the victim of police brutality, now<br>
+    I'm tired of bein' the victim of hate<br>
+    You're rapin' me of my pride<br>
+    Oh, for God's sake<br>
+    I look to heaven to fulfill its prophecy...<br>
+    Set me free<br><br>
+
+    Skin head, dead head<br>
+    Everybody gone bad<br>
+    <span class="word-option" onclick="check(this, 'trepidation')">trepidation</span>, speculation<br>
+    Everybody allegation<br>
+    In the suite, on the news<br>
+    Everybody dog food<br>
+    Black man, black male<br>
+    Throw your brother in jail<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us us<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about us<br><br>
+
+    Beat me, <span class="word-option" onclick="check(this, 'hate')">hate</span> me<br>
+    You can never break me<br>
+    Will me, thrill me<br>
+    You can never <span class="word-option" onclick="check(this, 'kill')">kill</span> me<br>
+    Jew me, sue me<br>
+    Everybody do me<br>
+    Kick me, kike me<br>
+    Don't you black or white me<br><br>
+
+    All I wanna say is that<br>
+    They don't really care about
