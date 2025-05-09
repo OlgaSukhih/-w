@@ -1,316 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>They Don't Care About Us</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header {
-      text-align: center;
-      margin-top: 20px;
-    }
-    h1 {
-      color: white;
-      font-size: 2.5em;
-    }
-    h2 {
-      color: #ccc;
-      font-size: 1.5em;
-      margin: 10px 0;
-    }
-    h3 {
-      color: #f2a4b6;
-      font-size: 1.8em;
-      margin-bottom: 20px;
-    }
-    a {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #fff;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-      max-width: 1200px;
-      width: 90%;
-      margin-bottom: 40px;
-    }
-    .image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: start;
-    }
-    .image img {
-      max-width: 100%;
-      height: auto;
-    }
-    .lyrics {
-      flex: 2;
-      padding: 20px;
-    }
-    .word-option {
-      display: inline-block;
-      margin: 2px;
-      padding: 5px 10px;
-      border-radius: 15px;
-      background-color: #333;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .word-option.correct {
-      background-color: #6fa076;
-      color: #000;
-      pointer-events: none;
-    }
-    .word-option.incorrect {
-      background-color: #e89ca6;
-      color: #000;
-    }
-    .buttons {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .buttons button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #444;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .buttons button:hover {
-      background-color: #666;
-    }
-    audio {
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>They Don't Care About Us - Listen&Sing</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .left-column {
+            flex: 30%;
+            padding-right: 20px;
+        }
+        .right-column {
+            flex: 70%;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #ff6b9d;
+            text-align: center;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .subtitle a {
+            color: #bb86fc;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .subtitle a:hover {
+            color: #9a67ea;
+            text-decoration: underline;
+        }
+        .song-text {
+            font-size: 1.1em;
+            white-space: pre-line;
+        }
+        .word-choice {
+            display: inline-block;
+            background-color: #333;
+            color: #e0e0e0;
+            padding: 2px 8px;
+            margin: 2px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .word-choice:hover {
+            background-color: #444;
+        }
+        .word-choice.correct {
+            background-color: #4caf50;
+            color: white;
+        }
+        .word-choice.incorrect {
+            background-color: #f44336;
+            color: white;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-translate {
+            background-color: #bb86fc;
+            color: black;
+        }
+        .btn-translate:hover {
+            background-color: #9a67ea;
+        }
+        .btn-discuss {
+            background-color: #03dac6;
+            color: black;
+        }
+        .btn-discuss:hover {
+            background-color: #018786;
+        }
+        .translation, .discussion {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+        }
+        .discussion h3 {
+            color: #03dac6;
+            margin-top: 0;
+        }
+        .translation h3 {
+            color: #bb86fc;
+            margin-top: 0;
+        }
+        .song-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="left-column">
+            <img src="/mnt/data/20250509_1525_Человек%20в%20шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="MJ drawing" class="song-image">
+            <audio class="audio-player" controls>
+                <source src="/mnt/data/michael-jackson-they-dont-care-about-us_(muzbig.club).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="right-column">
+            <h1>Listen&Sing</h1>
+            <div class="subtitle">
+                <a href="https://t.me/yourchannel" target="_blank">Join&GetInspired</a>
+            </div>
+            <h2>They don't care about us</h2>
+<div class="song-text" id="songText">
+Everybody gone <span class="word-choice" data-correct="bad">bad</span><br>
+Situation, <span class="word-choice" data-correct="aggravation">aggravation</span><br>
+Everybody <span class="word-choice" data-correct="allegation">allegation</span><br>
+In the <span class="word-choice" data-correct="suite">suite</span>, on the <span class="word-choice" data-correct="news">news</span><br>
+Everybody <span class="word-choice" data-correct="dog food">dog food</span><br>
+Bang bang, shot <span class="word-choice" data-correct="dead">dead</span><br>
+Everybody's gone <span class="word-choice" data-correct="mad">mad</span><br><br>
+        </div>
+    </div>
 
-<header>
-  <h1>Listen &amp; Sing</h1>
-  <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&amp;GetInspired</a></h2>
-  <h3>They don't care about us</h3>
-</header>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wordChoices = document.querySelectorAll('.word-choice');
+            wordChoices.forEach(word => {
+                word.addEventListener('click', function () {
+                    if (this.dataset.correct) {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                });
+            });
 
-<audio controls>
-  <source src="Michael Jackson - They Don't Care About Us.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+            document.getElementById('translateBtn').addEventListener('click', function () {
+                const translation = document.getElementById('translationText');
+                translation.style.display = translation.style.display === 'block' ? 'none' : 'block';
+                document.getElementById('discussionText').style.display = 'none';
+            });
 
-<div class="container">
-  <div class="image">
-    <img src="20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer" />
-  </div>
-  <div class="lyrics" id="lyrics">  <div class="word-group" data-answer="Skin head">
-    <span class="word-choice" onclick="checkChoice(this)">Skin head</span>
-    <span class="word-choice" onclick="checkChoice(this)">Big head</span>
-  </div>
-
-  <div class="word-group" data-answer="dead head">
-    <span class="word-choice" onclick="checkChoice(this)">dead head</span>
-    <span class="word-choice" onclick="checkChoice(this)">mad head</span>
-  </div>
-
-  <div class="word-group" data-answer="gone bad">
-    <span class="word-choice" onclick="checkChoice(this)">gone bad</span>
-    <span class="word-choice" onclick="checkChoice(this)">feels sad</span>
-  </div>
-
-  <div class="word-group" data-answer="aggravation">
-    <span class="word-choice" onclick="checkChoice(this)">aggravation</span>
-    <span class="word-choice" onclick="checkChoice(this)">celebration</span>
-  </div>
-
-  <div class="word-group" data-answer="allegation">
-    <span class="word-choice" onclick="checkChoice(this)">allegation</span>
-    <span class="word-choice" onclick="checkChoice(this)">hesitation</span>
-  </div>
-
-  <div class="word-group" data-answer="news">
-    <span class="word-choice" onclick="checkChoice(this)">news</span>
-    <span class="word-choice" onclick="checkChoice(this)">roof</span>
-  </div>
-
-  <div class="word-group" data-answer="dog food">
-    <span class="word-choice" onclick="checkChoice(this)">dog food</span>
-    <span class="word-choice" onclick="checkChoice(this)">fast food</span>
-  </div>
-
-  <div class="word-group" data-answer="shot dead">
-    <span class="word-choice" onclick="checkChoice(this)">shot dead</span>
-    <span class="word-choice" onclick="checkChoice(this)">dropped red</span>
-  </div>
-
-  <div class="word-group" data-answer="gone mad">
-    <span class="word-choice" onclick="checkChoice(this)">gone mad</span>
-    <span class="word-choice" onclick="checkChoice(this)">so sad</span>
-  </div>
-</div>
-
-<div class="buttons">
-  <button onclick="showTranslation()">Translate</button>
-  <button onclick="showDiscussion()">Let's Discuss</button>
-</div>
-
-<script>
-  function check(elem, correctWord) {
-    if (elem.innerText === correctWord) {
-      elem.classList.remove("incorrect");
-      elem.classList.add("correct");
-      elem.style.pointerEvents = "none";
-    } else {
-      elem.classList.add("incorrect");
-    }
-  }
-
-  function showTranslation() {
-    alert(`ОНИ ПЛЕВАТЬ НА НАС
-
-Бритоголовый, мёртвый — все сходят с ума
-Ситуация, раздражение — все кого-то обвиняют
-В номере, в новостях — все как собачий корм
-Выстрелы, мёртв — все обезумели
-
-Всё, что я хочу сказать — им плевать на нас
-
-Бей меня, ненавидь меня — ты никогда не сломаешь меня
-Дави меня, манипулируй — ты никогда не убьешь меня
-Оскорбляй, суди — все это делают
-Пинай, унижай — не разделяй меня по цвету кожи
-
-Я жертва полицейского насилия
-Меня лишают гордости
-Я взываю к небу, чтобы оно исполнило пророчество — освободи меня
-
-Чернокожий, арестованный — брось своего брата в тюрьму
-
-Меня бросают в "неправильный класс"
-Я не могу поверить, что это та страна, откуда я родом
-
-Если бы Рузвельт был жив — он бы этого не допустил
-Если бы Мартин Лютер был жив — он бы этого не допустил
-
-Они на самом деле не заботятся о нас`);
-  }
-
-  function showDiscussion() {
-    alert("ВОПРОСЫ ДЛЯ ОБСУЖДЕНИЯ:
-
-1. What message is the singer trying to deliver?
-2. Do you think this song is still relevant today?
-3. How do music and art help fight injustice?");
-  }
-</script>
-
+            document.getElementById('discussBtn').addEventListener('click', function () {
+                const discussion = document.getElementById('discussionText');
+                discussion.style.display = discussion.style.display === 'block' ? 'none' : 'block';
+                document.getElementById('translationText').style.display = 'none';
+            });
+        });
+    </script>
 </body>
-</html> us<br><br>
-
-    The government don't wanna see<br>
-    But if Roosevelt was livin'<br>
-    He wouldn't let this be, no, no<br><br>
-
-    Skin head, dead head<br>
-    Everybody gone bad<br>
-    Situation, speculation<br>
-    Everybody litigation<br>
-    Beat me, bash me<br>
-    You can never trash me<br>
-    Hit me, kick me<br>
-    You can never get me<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    Some things in life they just don't wanna see<br>
-    But if Martin Luther was livin'<br>
-    He wouldn't let this be<br><br>
-
-    Skin head, dead head<br>
-    Everybody gone bad<br>
-    Situation, segregation<br>
-    Everybody allegation<br>
-    In the suite, on the news<br>
-    Everybody dog food<br>
-    Kick me, strike me<br>
-    Don't you wrong or right me<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us us<br><br>
-
-    Tell me what has become of my rights<br>
-    Am I invisible because you ignore me?<br>
-    Your proclamation promised me free liberty, now<br>
-    I'm tired of bein' the victim of shame<br>
-    They're throwin' me in a class with a bad name<br>
-    I can't believe this is the land from which I came<br>
-    You know I really do hate to say us<br><br>
-
-    Tell me what has become of my life<br>
-    I have a wife and two children who <span class="word-option" onclick="check(this, 'love')">love</span> me<br>
-    I am the victim of police brutality, now<br>
-    I'm tired of bein' the victim of hate<br>
-    You're rapin' me of my pride<br>
-    Oh, for God's sake<br>
-    I look to heaven to fulfill its prophecy...<br>
-    Set me free<br><br>
-
-    Skin head, dead head<br>
-    Everybody gone bad<br>
-    <span class="word-option" onclick="check(this, 'trepidation')">trepidation</span>, speculation<br>
-    Everybody allegation<br>
-    In the suite, on the news<br>
-    Everybody dog food<br>
-    Black man, black male<br>
-    Throw your brother in jail<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us us<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about us<br><br>
-
-    Beat me, <span class="word-option" onclick="check(this, 'hate')">hate</span> me<br>
-    You can never break me<br>
-    Will me, thrill me<br>
-    You can never <span class="word-option" onclick="check(this, 'kill')">kill</span> me<br>
-    Jew me, sue me<br>
-    Everybody do me<br>
-    Kick me, kike me<br>
-    Don't you black or white me<br><br>
-
-    All I wanna say is that<br>
-    They don't really care about
+</html>
