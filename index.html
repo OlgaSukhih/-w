@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>They don't care about us</title>
+  <title>They Don't Care About Us — Listen & Understand</title>
   <style>
     body {
       background-color: #1b1b2f;
@@ -51,19 +51,17 @@
       width: 140px;
       height: 700px;
     }
-    .lips img {
-      width: 36px;
-      margin: 4px;
-    }
     .line {
       margin-bottom: 24px;
       font-size: 1.2em;
+      text-align: center;
     }
     .options {
       display: inline-flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-left: 10px;
+      justify-content: center;
     }
     .choice {
       background-color: #2f2f3d;
@@ -103,58 +101,101 @@
   </style>
 </head>
 <body>
-  <h1>Listen & Sing</h1>
+  <h1>They Don't Care About Us</h1>
   <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&GetInspired</a></h2>
 
   <audio controls>
-    <source src="audio.mp3" type="audio/mp3">
+    <source src="/mnt/data/They Don't Care About Us.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
-  <div class="lyrics">
-<div class="line">Skin head, dead head</div>
-<div class="line">Everybody gone bad</div>
-<div class="line">Situation, aggravation</div>
-<div class="line">Everybody allegation</div>
-<div class="line">In the suite, on the news</div>
-<div class="line">Everybody dog food</div>
-<div class="line">Bang bang, shot dead</div>
-<div class="line">
-  Everybody's gone mad
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">an angel</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">the law</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">no clue</span>
-  </span>
-</div>
-
+  <div class="lyrics-container">
+    <img class="girl-img" src="/mnt/data/20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Hat man" />
+    
+    <div class="line">
+      Skin head,
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">dead head</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">red head</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">big head</span>
+      </span>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const wordChoices = document.querySelectorAll('.word-choice');
-            wordChoices.forEach(word => {
-                word.addEventListener('click', function () {
-                    if (this.dataset.correct) {
-                        this.classList.add('correct');
-                    } else {
-                        this.classList.add('incorrect');
-                    }
-                });
-            });
+    <div class="line">Everybody gone bad</div>
 
-            document.getElementById('translateBtn').addEventListener('click', function () {
-                const translation = document.getElementById('translationText');
-                translation.style.display = translation.style.display === 'block' ? 'none' : 'block';
-                document.getElementById('discussionText').style.display = 'none';
-            });
+    <div class="line">
+      Situation,
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">aggravation</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">celebration</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">invitation</span>
+      </span>
+    </div>
 
-            document.getElementById('discussBtn').addEventListener('click', function () {
-                const discussion = document.getElementById('discussionText');
-                discussion.style.display = discussion.style.display === 'block' ? 'none' : 'block';
-                document.getElementById('translationText').style.display = 'none';
-            });
+    <div class="line">Everybody allegation</div>
+
+    <div class="line">
+      In the suite, on the
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">news</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">roof</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">bus</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody dog food</div>
+
+    <div class="line">
+      Bang bang, shot
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">dead</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">glass</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">gun</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody's gone mad</div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="showTranslation()">Translation</button>
+    <button onclick="showDiscussion()">Discussion</button>
+  </div>
+
+  <script>
+    function checkChoice(el) {
+      const isCorrect = el.getAttribute("data-correct") === "true";
+      const siblings = el.parentElement.querySelectorAll(".choice");
+
+      siblings.forEach(sib => {
+        sib.classList.remove("correct", "incorrect");
+        sib.style.pointerEvents = "none";
+      });
+
+      if (isCorrect) {
+        el.classList.add("correct");
+      } else {
+        el.classList.add("incorrect");
+        siblings.forEach(sib => {
+          if (sib.getAttribute("data-correct") === "true") {
+            sib.classList.add("correct");
+          }
         });
-    </script>
+      }
+    }
+
+    function showTranslation() {
+      alert("Перевод:\nСкинхеды, мертвецы\nВсе сошли с ума\nСитуация, раздражение\nВсе кого-то обвиняют\nВ номере, в новостях\nВсе — как собачья еда\nВыстрел — убит\nВсе сошли с ума");
+    }
+
+    function showDiscussion() {
+      alert(`Discussion Questions:
+1. What social issues are mentioned in this song?
+2. How does the artist express frustration or anger?
+3. Which line do you find the most powerful and why?
+4. How does this song relate to news or reality today?
+5. What is the main message of the chorus?`);
+    }
+  </script>
 </body>
 </html>
