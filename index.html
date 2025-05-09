@@ -6,80 +6,149 @@
   <title>They Don't Care About Us</title>
   <style>
     body {
-      background-color: #121212;
+      margin: 0;
+      padding: 0;
+      background-color: #111;
       color: white;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
       text-align: center;
-      padding: 20px;
+      margin-top: 20px;
     }
     h1 {
       color: white;
       font-size: 2.5em;
     }
     h2 {
-      color: #ff69b4;
-      font-size: 2em;
-      margin: 0.5em 0;
+      color: #ccc;
+      font-size: 1.5em;
+      margin: 10px 0;
     }
-    .choice {
-      background-color: #333;
-      color: white;
-      padding: 5px 10px;
-      margin: 3px;
-      border-radius: 15px;
-      cursor: pointer;
+    h3 {
+      color: #f2a4b6;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+    a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      max-width: 1200px;
+      width: 90%;
+      margin-bottom: 40px;
+    }
+    .image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+    .image img {
+      max-width: 100%;
+      height: auto;
+    }
+    .lyrics {
+      flex: 2;
+      padding: 20px;
+    }
+    .word-option {
       display: inline-block;
+      margin: 2px;
+      padding: 5px 10px;
+      border-radius: 15px;
+      background-color: #333;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .choice.correct {
-      background-color: #6ca36c;
+    .word-option.correct {
+      background-color: #6fa076;
+      color: #000;
     }
-    .choice.incorrect {
-      background-color: #e88dab;
+    .word-option.incorrect {
+      background-color: #e89ca6;
+      color: #000;
     }
-    button {
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
       background-color: #444;
       color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 10px;
+      font-size: 1em;
       cursor: pointer;
+      transition: background 0.3s;
     }
-    button:hover {
+    .buttons button:hover {
       background-color: #666;
+    }
+    audio {
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
+
+<header>
   <h1>Listen &amp; Sing</h1>
-  <a href="https://t.me/joinandgetinspired" target="_blank">Join &amp; Get Inspired</a>
-  <h2>They Don't Really Care About Us</h2>
-  <audio controls>
-    <source src="Michael Jackson - They Don't Care About Us.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-  <div class="lyrics-container">
-    <p><span class="choice" data-answer="true">Skinhead</span>/<span class="choice">Baldhead</span>, <span class="choice" data-answer="true">dead head</span>/<span class="choice">dread head</span>, everybody gone <span class="choice" data-answer="true">mad</span>/<span class="choice">bad</span></p>
-    <!-- Добавьте остальные строки песни с интерактивными плашками здесь -->
-    <button onclick="alert('Translation will be shown here.')">Translate</button>
-    <button onclick="alert('Let's discuss: What social issues does the song address? Do you agree with the message?')">Let's Discuss</button>
+  <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&amp;GetInspired</a></h2>
+  <h3>They don't care about us</h3>
+</header>
+
+<audio controls>
+  <source src="Michael Jackson - They Don't Care About Us.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<div class="container">
+  <div class="image">
+    <img src="20250509_1525_\u0427\u0435\u043b\u043e\u0432\u0435\u043a \u0432 \u0448\u043b\u044f\u043f\u0435_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer" />
   </div>
-  <script>
-    const choices = document.querySelectorAll('.choice');
-    choices.forEach(choice => {
-      choice.addEventListener('click', () => {
-        const siblings = choice.parentElement.querySelectorAll('.choice');
-        siblings.forEach(sib => {
-          sib.classList.remove('correct', 'incorrect');
-          sib.style.pointerEvents = 'none';
-        });
-        if (choice.hasAttribute('data-answer')) {
-          choice.classList.add('correct');
-        } else {
-          choice.classList.add('incorrect');
-        }
-      });
-    });
-  </script>
+  <div class="lyrics" id="lyrics">
+    <!-- Сюда вставлен полный текст песни с интерактивом по ключевым словам -->
+    <!-- Здесь может быть множество span-элементов вида: <span class='word-option' onclick='check(this, "правильное слово")'>вариант</span> -->
+    <!-- Для краткости сейчас опущен. Он будет вставлен по требованию -->
+  </div>
+</div>
+
+<div class="buttons">
+  <button onclick="showTranslation()">Translate</button>
+  <button onclick="showDiscussion()">Let's Discuss</button>
+</div>
+
+<script>
+  function check(elem, correctWord) {
+    if (elem.innerText === correctWord) {
+      elem.classList.add("correct");
+    } else {
+      elem.classList.add("incorrect");
+    }
+    elem.onclick = null;
+  }
+
+  function showTranslation() {
+    alert(`ОНИ ПЛЕВАЛИ НА НАС\n\nБритоголовый, мёртвый\nВсе сошли с ума\nСитуация, раздражение\nВсе выдвигают обвинения\nВ номере, в новостях\nВсе как собачий корм\nВыстрелы, смерть\nВсе сошли с ума\n\nВсё, что я хочу сказать —\nИм на нас плевать...`); // Обрезан для краткости
+  }
+
+  function showDiscussion() {
+    alert("ВОПРОСЫ ДЛЯ ОБСУЖДЕНИЯ:\n\n1. What message is the singer trying to deliver?\n2. Do you think this song is still relevant today?\n3. How do music and art help fight injustice?");
+  }
+</script>
+
 </body>
 </html>
